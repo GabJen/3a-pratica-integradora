@@ -4,8 +4,71 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Liga desliga</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            margin: 3em 0;
+        }
+
+        button {
+            padding: .5em;
+            background-color: lightseagreen;
+            border-radius: 5px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
+    <div>
+        <img src="./imagens/lampada-desligada.jpg"
+            width="200px">
+    </div>
     
+    <button type="button">Ligar</button>
+    <script>
+        const imagem = document.querySelector('img');
+        const botao = document.querySelector('button');
+
+        lampada = {
+            ligada: false,
+            urls: {
+                desligada: "./imagens/lampada-desligada.jpg",
+                ligada: "./imagens/lampada-ligada.jpg"
+            },
+            ligar() {
+                imagem.setAttribute("src", this.urls.ligada);
+            },
+            desligar() {
+                imagem.setAttribute("src", this.urls.desligada);
+            }
+        }
+
+        botao.addEventListener("click",() => {
+            if (lampada.ligada) {
+                lampada.desligar();
+                lampada.ligada = false;
+                alert("lampada desligada")
+            }
+            else {
+                lampada.ligar();
+                lampada.ligada = true;
+                alert("lampada ligada")
+            }
+        })
+    </script>
 </body>
 </html>
